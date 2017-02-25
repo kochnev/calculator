@@ -14,6 +14,7 @@ struct CalculatorBrain {
     
     private var accumulator: Double?
     
+    var description: String?
     
     private enum Operation {
         case constant(Double)
@@ -85,6 +86,12 @@ struct CalculatorBrain {
     var result: Double? {
         get {
             return accumulator
+        }
+    }
+    
+    var resultIsPending: Bool {
+        get {
+            return pendingBinaryOperation != nil
         }
     }
     
