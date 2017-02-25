@@ -28,6 +28,20 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func touchDot(_ sender: UIButton) {
+        if userIsInMiddleOfTyping {
+            let currentTextInDisplay = display.text!
+            if !currentTextInDisplay.contains(".") {
+                display.text = currentTextInDisplay + "."
+            }
+        }
+        else
+        {
+             display.text = "0."
+             userIsInMiddleOfTyping = true
+        }
+    }
+    
     var displayValue: Double {
         get {
             return Double(display.text!)!
