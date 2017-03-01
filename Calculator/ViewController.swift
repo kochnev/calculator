@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var history: UILabel!
+    
     @IBOutlet weak var display: UILabel!
     
     var userIsInMiddleOfTyping = false
@@ -27,6 +29,8 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    
     
     @IBAction func touchDot(_ sender: UIButton) {
         if userIsInMiddleOfTyping {
@@ -50,6 +54,7 @@ class ViewController: UIViewController {
             display.text = String(newValue)
         }
     }
+
     
     private var brain = CalculatorBrain()
     
@@ -63,6 +68,10 @@ class ViewController: UIViewController {
         }
         if let result = brain.result {
             displayValue = result
+        }
+        if let resultDescription = brain.description{
+            history.text =  (brain.resultIsPending) ? resultDescription + "..." : resultDescription + "="
+            
         }
     }
     
